@@ -1,5 +1,7 @@
 package com.tutorial;
 
+import java.util.ArrayList;
+
 class Display {
     static String singkatan = "Alpha";
     public String name;
@@ -20,7 +22,35 @@ class Display {
     }
 }
 
-public class Main {
+
+// Static Method
+class Player {
+    // Membuat array list
+    private static ArrayList<String> nameList = new ArrayList<String>();
+
+    private static int numberOfPlayer;
+    private String name;
+
+    Player(String name){
+        this.name = name;
+        Player.numberOfPlayer++;
+        Player.nameList.add(this.name); // Memasukkan Nama ke ArrayList
+    }
+
+    static void showNumberOfPlayer(){
+        System.out.println("Number of palyer : " + Player.numberOfPlayer);
+    }
+
+    void tampilkan(){
+        System.out.println("Namaku adalah : " + this.name);
+    }
+
+    static ArrayList<String> getName(){
+        return Player.nameList;
+    }
+}
+
+class Main {
     public static void main(String[] args) {
         Display display1 = new Display("Hazan");
         Display display2 = new Display("Rhavizhan");
@@ -51,6 +81,18 @@ public class Main {
         System.out.println("Nama lainku ke-7 adalah = " + display1.singkatan);
         System.out.println("Nama lainku ke-8 adalah = " + display2.singkatan);
         System.out.println("Nama lainku ke-9 adalah = " + Display.singkatan);
+        System.out.println("\n");
+
+
+        // Static ke 2
+        Player player1 = new Player("Ipul");
+        Player player2 = new Player("Hamzah");
+        Player player3 = new Player("Kaipul");
+        Player player4 = new Player("Rendy");
+
+        Player.showNumberOfPlayer();
+        System.out.println("Names : " + Player.getName());
+
 
     }
 }
